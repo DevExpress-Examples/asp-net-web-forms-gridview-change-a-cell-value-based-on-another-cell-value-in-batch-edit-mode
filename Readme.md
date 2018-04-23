@@ -1,0 +1,42 @@
+# ASPxGridView - Batch Edit - How to change a cell value based on another cell value
+
+
+<p>The sample illustrates how to change the Price column value when the Percentage column is changed and vice versa. <br><br>ASPxClientGridView provides the <a href="https://documentation.devexpress.com/#AspNet/DevExpressWebScriptsASPxClientGridView_batchEditApitopic">ASPxClientGridView.batchEditApi</a> property to work with grid in batch mode on the client side. In the <a href="https://documentation.devexpress.com/#AspNet/clsDevExpressWebScriptsASPxClientGridViewBatchEditApitopic">ASPxClientGridViewBatchEditApi</a> class, there are two methods to get and set a cell value respectfully: <a href="https://documentation.devexpress.com/#AspNet/DevExpressWebScriptsASPxClientGridViewBatchEditApi_GetCellValuetopic">ASPxClientGridViewBatchEditApi.GetCellValue</a>, <a href="https://documentation.devexpress.com/#AspNet/DevExpressWebScriptsASPxClientGridViewBatchEditApi_SetCellValuetopic(U0XPfw)">ASPxClientGridViewBatchEditApi.SetCellValue(Int32,String,Object)</a>.<br><br>In the <a href="https://documentation.devexpress.com/#AspNet/DevExpressWebScriptsASPxClientGridView_BatchEditEndEditingtopic">ASPxClientGridView.BatchEditEndEditing</a> event handler, the GetCellValue method returns a correct cell value when a cell is not in <strong>editing mode</strong>. If a cell is in <strong>editing mode</strong> and a value is changed, the GetCellValue method returns the previous value, not a new entered value. To get a new entered value that is still in <strong>editing mode</strong>, it's necessary to use the <a href="https://documentation.devexpress.com/#AspNet/DevExpressWebScriptsASPxClientGridViewBatchEditEndEditingEventArgs_rowValuestopic">ASPxClientGridViewBatchEditEndEditingEventArgs.rowValues</a> property. <br><br>In the attached sample, a focused column is saved in the <a href="https://documentation.devexpress.com/#AspNet/DevExpressWebScriptsASPxClientGridView_BatchEditStartEditingtopic">ASPxClientGridView.BatchEditStartEditing</a> event handler:</p>
+
+
+```js
+var fieldName;
+function OnBatchEditStartEditing(s, e) {
+    fieldName = e.focusedColumn.fieldName;
+}
+ 
+
+```
+
+
+<p>When column editing is over, the <a href="https://documentation.devexpress.com/#AspNet/DevExpressWebScriptsASPxClientGridView_BatchEditEndEditingtopic">ASPxClientGridView.BatchEditEndEditing</a> event is raised. To get a new entered value, the rowValues property is used. To update the next column, the SetCellValue is used as a new column is not yet in <strong>editing mode</strong>: </p>
+
+
+```js
+function OnBatchEditEndEditing(s, e) {
+    var cPrice = s.GetColumnByField("Price");
+    var cPercentage = s.GetColumnByField("Percentage");
+    var cost = s.batchEditApi.GetCellValue(e.visibleIndex, "Cost");
+     if (fieldName == "Price") {
+        var price = e.rowValues[cPrice.index].value;
+        s.batchEditApi.SetCellValue(e.visibleIndex, "Percentage", (price - cost) / (cost), null, true);
+    }
+    if (fieldName == "Percentage") {
+        var percentage = e.rowValues[cPercentage.index].value;
+        s.batchEditApi.SetCellValue(e.visibleIndex, "Price", cost + (cost * percentage), null, true);
+    }
+}
+ 
+
+```
+
+
+
+<br/>
+
+

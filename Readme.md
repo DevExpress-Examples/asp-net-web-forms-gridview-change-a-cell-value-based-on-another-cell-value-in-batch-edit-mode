@@ -41,3 +41,7 @@ function OnBatchEditEndEditing(s, e) {
 - [Default.aspx](./CS/Default.aspx) (VB: [Default.aspx](./VB/Default.aspx))
 - [Default.aspx.cs](./CS/Default.aspx.cs) (VB: [Default.aspx.vb](./VB/Default.aspx.vb))
 <!-- default file list end -->
+
+## Documentation
+
+- [Batch Edit Mode](https://docs.devexpress.com/AspNet/16443/components/grid-view/concepts/edit-data/batch-edit-mode)

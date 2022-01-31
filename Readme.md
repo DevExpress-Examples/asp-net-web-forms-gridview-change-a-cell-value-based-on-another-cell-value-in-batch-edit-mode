@@ -6,11 +6,11 @@
 
 # GridView for Web Forms - How to change a cell value based on another cell value in batch edit mode
 
-The example demonstrates how to change a column value (Price) when another column (Percentage) is changed and vice versa.
+This example demonstrates how to change a column value (Price) when another column (Percentage) is changed and vice versa.
 
 ![Grid View - Changed Values](grid-batch-linked-values.png)
 
-[ASPxClientGridView](https://docs.devexpress.com/AspNet/js-ASPxClientGridView) class implements the [batchEditApi](https://docs.devexpress.com/AspNet/js-ASPxClientGridView.batchEditApi) property that exposes API to work with grid in batch mode on the client side.
+The [ASPxClientGridView](https://docs.devexpress.com/AspNet/js-ASPxClientGridView) class implements the [batchEditApi](https://docs.devexpress.com/AspNet/js-ASPxClientGridView.batchEditApi) property that exposes an API to work with the grid in batch mode on the client side.
 
 When value editing is over, the [BatchEditEndEditing](https://docs.devexpress.com/AspNet/js-ASPxClientGridView.BatchEditEndEditing) event is raised. In the event handler, you can get a cell value in the following ways:
 

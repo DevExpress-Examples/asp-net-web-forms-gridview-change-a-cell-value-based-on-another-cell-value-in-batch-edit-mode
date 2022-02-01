@@ -15,7 +15,7 @@ The [ASPxClientGridView](https://docs.devexpress.com/AspNet/js-ASPxClientGridVie
 After a user edits the value, the [BatchEditEndEditing](https://docs.devexpress.com/AspNet/js-ASPxClientGridView.BatchEditEndEditing) event is raised. In the event handler, you can get a cell value in the following ways:
 
 - The [batchEditApi.GetCellValue](https://docs.devexpress.com/AspNet/js-ASPxClientGridViewBatchEditApi.GetCellValue(visibleIndex-columnFieldNameOrId)) method returns the value of the specified cell that is not in **edit mode**.
-- [rowValues](https://docs.devexpress.com/AspNet/js-ASPxClientGridViewBatchEditEndEditingEventArgs.rowValues) property returns a new entered value of a cell that is in **editing mode**.
+- The [rowValues](https://docs.devexpress.com/AspNet/js-ASPxClientGridViewBatchEditEndEditingEventArgs.rowValues) property returns the new value of the specified cell that is in **edit mode**.
 
 The [batchEditApi.SetCellValue](https://docs.devexpress.com/AspNet/js-ASPxClientGridViewBatchEditApi.SetCellValue(visibleIndex-columnFieldNameOrId-value)) method allows you to specify a cell value.
 

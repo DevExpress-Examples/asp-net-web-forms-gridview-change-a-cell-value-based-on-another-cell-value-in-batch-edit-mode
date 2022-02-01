@@ -12,7 +12,7 @@ This example demonstrates how to change a column value (Price) when another colu
 
 The [ASPxClientGridView](https://docs.devexpress.com/AspNet/js-ASPxClientGridView) class implements the [batchEditApi](https://docs.devexpress.com/AspNet/js-ASPxClientGridView.batchEditApi) property that exposes an API to work with the grid in batch mode on the client side.
 
-When value editing is over, the [BatchEditEndEditing](https://docs.devexpress.com/AspNet/js-ASPxClientGridView.BatchEditEndEditing) event is raised. In the event handler, you can get a cell value in the following ways:
+After a user edits the value, the [BatchEditEndEditing](https://docs.devexpress.com/AspNet/js-ASPxClientGridView.BatchEditEndEditing) event is raised. In the event handler, you can get a cell value in the following ways:
 
 - [batchEditApi.GetCellValue](https://docs.devexpress.com/AspNet/js-ASPxClientGridViewBatchEditApi.GetCellValue(visibleIndex-columnFieldNameOrId)) method returns a value of a cell that is not in **editing mode**.
 - [rowValues](https://docs.devexpress.com/AspNet/js-ASPxClientGridViewBatchEditEndEditingEventArgs.rowValues) property returns a new entered value of a cell that is in **editing mode**.
